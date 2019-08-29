@@ -34,7 +34,7 @@ spec:
     securityContext:
       allowPrivilegeEscalation: false
 ```
-容器里是非 root 用户运行 `id` `uid=1000 gid=3000 groups=2000`
+容器里是非 root 用户运行 **id** `uid=1000 gid=3000 groups=2000`
 
 * Container-level
 
