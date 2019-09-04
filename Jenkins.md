@@ -1,5 +1,9 @@
 # Jenkins
 
+* Mac 上 jenkins 运行的问题
+* Jenkins cli 
+* golang sdk 调用 jenkins api 创建 pipeline Job
+
 ## 由 Jenkinsfile 引发的问题
 
 ```
@@ -76,4 +80,55 @@ Mac OSX 系统 上面提到配置 docker 环境变量,只是可以 agent 阶段�
     <true/>
   </dict>
 </plist>
+```
+
+## Jenkins Cli
+Jenkins Cli 提供了诸多命令可以与 Jenkins 交互
+如导出 Job `java -jar jenkins-cli.jar -s http://localhost:8080/ -auth admin:admin get-job      my-k8s-jenkins-pipeline >    my-k8s-jenkins-pipeline.xml`
+![](images/Jenkins/Jenkins-Cli.png)
+
+## Golang SDK 调用 Jenkins api 创建 Pipeline Job
+代码如下
+
+```golang
+package main
+
+import (
+	"fmt"
+
+	"github.com/bndr/gojenkins"
+)
+
+func main() {
+	// client := &http.Client{}
+	jenkins := gojenkins.CreateJenkins(nil, "http://localhost:8080", "admin", "admin")
+	jenkins.Init()
+
+	configString := `<?xml version='1.1' encoding='UTF-8'?>
+	<flow-definition plugin="workflow-job@2.34">
+	  <actions/>
+	  <description>app.env 描述</description>
+	  <keepDependencies>false</keepDependencies>
+	  <properties/>
+	  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.74">
+		<script>def label = &quot;mypod-${UUID.randomUUID().toString()}&quot;
+	podTemplate(label: label, cloud: &apos;kubernetes&apos;) {
+		node(label) {
+			stage(&apos;Run shell&apos;) {
+				sh &apos;sleep 130s&apos;
+				sh &apos;echo hello world.&apos;
+			}
+		}
+	}</script>
+		<sandbox>true</sandbox>
+	  </definition>
+	  <triggers/>
+	  <disabled>false</disabled>
+	</flow-definition>`
+	_, err := jenkins.CreateJob(configString, "api-create-my-k8s-jenkins-pipeline")
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+}
 ```
