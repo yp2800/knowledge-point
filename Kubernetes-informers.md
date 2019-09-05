@@ -50,7 +50,6 @@ func main() {
 ```
 
 ## Dynamic Informer
-
 ```
 package main
 
@@ -60,6 +59,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/dynamic/dynamicinformer"
@@ -116,7 +116,13 @@ func restConfig() (*rest.Config, error) {
 func startWatching(stopCh <-chan struct{}, s cache.SharedIndexInformer) {
 	handlers := cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
-			logrus.Info("received add event!")
+			u := obj.(*unstructured.Unstructured)
+
+			logrus.WithFields(logrus.Fields{
+				"name":      u.GetName(),
+				"namespace": u.GetNamespace(),
+				"labels":    u.GetLabels(),
+			}).Info("received add event!")
 		},
 		UpdateFunc: func(oldObj, obj interface{}) {
 			logrus.Info("received update event!")
