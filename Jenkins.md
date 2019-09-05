@@ -3,6 +3,7 @@
 * Mac 上 jenkins 运行的问题
 * Jenkins cli 
 * golang sdk 调用 jenkins api 创建 pipeline Job
+* Declarative Pipeline support requires Jenkins 2.66 xml 例子
 
 ## 由 Jenkinsfile 引发的问题
 
@@ -131,4 +132,61 @@ func main() {
 	}
 
 }
+```
+
+## Declarative Pipeline support requires Jenkins 2.66 xml 例子
+
+```
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.34">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.3.9"/>
+  </actions>
+  <description>app.env 描述</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.74">
+    <script>pipeline {
+  agent {
+    kubernetes {
+      defaultContainer &apos;jnlp&apos;
+      yaml &quot;&quot;&quot;
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
+spec:
+  containers:
+  - name: maven
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
+&quot;&quot;&quot;
+    }
+  }
+  stages {
+    stage(&apos;Run maven&apos;) {
+      steps {
+        container(&apos;maven&apos;) {
+          sh &apos;mvn -version&apos;
+        }
+        container(&apos;busybox&apos;) {
+          sh &apos;/bin/busybox&apos;
+        }
+      }
+    }
+  }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
 ```
