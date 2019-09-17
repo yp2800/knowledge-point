@@ -59,6 +59,9 @@ COPY --from=image 可以来其它的镜像里的文件 `COPY --from=nginx:latest
 
 ## 支持使用 SSH 进行远程连接
 客户端和引擎之间的连接方法允许简单的、共享的 ssh配置，这比之前的自定义 CA证书解决的方案更加常见和容易理解。` docker -H ssh://vagrant@192.168.1113 run -ti ubuntu echo “hello”` **需要配置 ssh 密钥登陆**
+
+也可以配置环境变量 `export DOCKER_HOST=ssh://root@192.168.1.113` 再执行 docker 命令，也是去其它机器上去执行了。
+
 ssh 代理
 
 ## BuildKit
