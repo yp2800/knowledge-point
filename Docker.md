@@ -57,6 +57,9 @@ CMD ["./app"]
 
 COPY --from=image 可以来其它的镜像里的文件 `COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf`
 
+## 可使用 .dockerignore 忽略不需要的文件
+.dockerignore 文件名是固定的，并且需要放到 Dockerfile 的根目录下。最后 Docker CLI 会从 build context 中先过滤掉 .dockerignore 忽略的内容，再将剩余的内容传送到 Docker Daemon，可以看出 .dockerignore 的作用是减轻 Docker CLI 和 Docker Daemon 的压力。
+
 ## 支持使用 SSH 进行远程连接
 客户端和引擎之间的连接方法允许简单的、共享的 ssh配置，这比之前的自定义 CA证书解决的方案更加常见和容易理解。` docker -H ssh://vagrant@192.168.1113 run -ti ubuntu echo “hello”` **需要配置 ssh 密钥登陆**
 
@@ -65,7 +68,15 @@ COPY --from=image 可以来其它的镜像里的文件 `COPY --from=nginx:latest
 ssh 代理
 
 ## BuildKit
-docker 19 版本已经正式支持 BuildKit，但是默认没有开启，可以通过设置环境变量DOCKER_BUILDKIT=1启用BuildKit功能。
+docker 19 版本已经正式支持 BuildKit，但是默认没有开启，可以通过设置环境变量DOCKER_BUILDKIT=1启用BuildKit功能。也可以通过配置 docker daemon 参数 `/etc/docker/daemon.json` 如下配置
+
+```
+{
+  "features": {
+    "buildkit": true
+  }
+}
+```
 
 虽然 BuildKit 被 docker集成，但并不依赖 docker ,BuildKit 可以作为单独的组件运行，只需要配合 registry及 runc 或者 containerd就可以构建镜像。
 
