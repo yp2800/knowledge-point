@@ -13,6 +13,7 @@
   * [Jenkin On K 8 S](Jenkins/Jenkin-on-K8s.md)
   * [Jenkins Mac](Jenkins/Jenkins-mac.md)
 - Kubernetes
+  * [Deployment](Kubernetes/Deployment.md)
   * [k8s容器内查看-cpu-memory分配情况](Kubernetes/k8s容器内查看-cpu-memory分配情况.md)
   * [kube-proxy原理](Kubernetes/kube-proxy原理.md)
   * [Kubernetes Informers](Kubernetes/Kubernetes-informers.md)
