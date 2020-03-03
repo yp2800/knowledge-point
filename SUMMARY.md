@@ -15,6 +15,7 @@
   * [Pod Non Root](Kubernetes/Pod-non-root.md)
   * [PV PVC Storage Class](Kubernetes/PV-PVC-StorageClass.md)
   * [Security Context](Kubernetes/SecurityContext.md)
+  * [优雅热更新](Kubernetes/优雅热更新.md)
 * [Docker](Docker.md)
 * [Istio](Istio.md)
 * [Redis](Redis.md)
