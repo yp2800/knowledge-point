@@ -12,3 +12,4 @@
 * [2-4 goroutine 协程的调度模型MPG](http://www.learnku.net/course/4/articles/124)
 * [一张图说明Golang的并发模型MPG](https://juejin.im/post/5d6f42865188255eef1a78df)
 * [Golang/Go goroutine调度器原理/实现【原】](https://www.cnblogs.com/sunsky303/p/11058728.html) 这篇讲的明白些
+* [基础知识](https://qcrao.com/ishare/go-scheduler/#true%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
