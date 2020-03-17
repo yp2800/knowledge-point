@@ -1,7 +1,5 @@
 # Your Book Title
 
-- Book
-  - [Istio](_book/Istio/README.md)
 - [Cloud Native](CloudNative/README.md)
 - Docker
   * [Docker特性](Docker/Docker特性.md)
@@ -12,8 +10,12 @@
   * [Golang-继承](Golang/Golang-继承.md)
   * [Golang代码质量检测](Golang/Golang代码质量检测.md)
   * [Golang性能优化](Golang/Golang性能优化.md)
+  * [Golang死锁](Golang/Golang死锁.md)
   * [goroutine-协程-线程-进程](Golang/goroutine-协程-线程-进程.md)
+  * [go值传递](Golang/go值传递.md)
+  * [go内存逃逸分析](Golang/go内存逃逸分析.md)
   * [go并发MGP模式](Golang/go并发MGP模式.md)
+  * [go并发控制](Golang/go并发控制.md)
   * [垃圾回收-三色法](Golang/垃圾回收-三色法.md)
 - [Istio](Istio/README.md)
   * [服务网格](Istio/服务网格.md)
