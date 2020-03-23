@@ -11,6 +11,7 @@
   * [Golang之channel](Golang/Golang之channel.md)
   * [Golang之make与new和nil](Golang/Golang之make与new和nil.md)
   * [Golang之map](Golang/Golang之map.md)
+  * [Golang之类型判断](Golang/Golang之类型判断.md)
   * [Golang代码质量检测](Golang/Golang代码质量检测.md)
   * [Golang性能优化](Golang/Golang性能优化.md)
   * [Golang死锁](Golang/Golang死锁.md)
