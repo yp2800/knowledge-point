@@ -2,8 +2,9 @@
 
 - [Algorithm](Algorithm/README.md)
   * [二叉树](Algorithm/二叉树.md)
+  * [排序算法](Algorithm/排序算法.md)
 - [Cloud Native](CloudNative/README.md)
-- Docker
+- [Docker](Docker/README.md)
   * [Docker特性](Docker/Docker特性.md)
   * [Docker资源隔离](Docker/Docker资源隔离.md)
 - [Golang](Golang/README.md)
