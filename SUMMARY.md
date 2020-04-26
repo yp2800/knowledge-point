@@ -38,6 +38,7 @@
   * [kube-proxy原理](Kubernetes/kube-proxy原理.md)
   * [Kubernetes Informers](Kubernetes/Kubernetes-informers.md)
   * [Pod Non Root](Kubernetes/Pod-non-root.md)
+  * [Pod驱逐](Kubernetes/Pod驱逐.md)
   * [PV PVC Storage Class](Kubernetes/PV-PVC-StorageClass.md)
   * [Security Context](Kubernetes/SecurityContext.md)
   * [优雅热更新](Kubernetes/优雅热更新.md)
