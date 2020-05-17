@@ -25,9 +25,42 @@ make
 
 echo "HOTP/T30 testuser - $(head -c 16 /dev/urandom |xxd -c 256 -ps)" > /etc/ocserv/users.oath  //创建用户 token
 ```
+## OCServ + LDap
+
+```
+apt install -y freeradius
+apt isntall -y freeradius-ldap
+cd /etc/freeradius/3.0/mods-enabled
+ln -sf ../mods-available/ldap  ldap // 编译配置 ldap连接信息
+```
+
+## OCserv + LDap + Google authenticator
+```
+cat /etc/pam.d/radiusd
+#@include common-auth
+#@include common-account
+#@include common-password
+#@include common-session
+
+auth    required   pam_google_authenticator.so forward_pass secret=/etc/freeradius/3.0/secrets/${USER}/.google-authenticator user=freerad
+auth    required   pam_ldap.so use_first_pass debug
+account required   pam_permit.so
+```
 
 
+```
+cat /etc/freeradius/3.0/secrets
+#!/bin/bash
+
+mkdir -p $1
+chown freerad:freerad $1
+google-authenticator -t -f -d -w 17 -r 3 -R 30 -q -s $1/.google-authenticator
+chown freerad:freerad $1/.google-authenticator
+cat $1/.google-authenticator
+```
 #### 参考
 * [使用Ocserv 手动搭建 Cisco AnyConnect VPN服务端](https://doubibackup.com/k9994-k3.html)
 * [Openconnect服务部署](https://wwww.lvmoo.com/1048.love)
 * [Set up OpenConnect VPN Server (ocserv) on Ubuntu 16.04/18.04 with Let’s Encrypt](https://www.linuxbabe.com/ubuntu/openconnect-vpn-server-ocserv-ubuntu-16-04-17-10-lets-encrypt)
+* [How to install OpenLDAP on Ubuntu 18.04](https://www.techrepublic.com/article/how-to-install-openldap-on-ubuntu-18-04/)
+* [Adding Two-Factor Authentication to FreeRADIUS](https://networkjutsu.com/freeradius-google-authenticator/)
