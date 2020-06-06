@@ -40,6 +40,7 @@
   * [k8s容器内查看-cpu-memory分配情况](Kubernetes/k8s容器内查看-cpu-memory分配情况.md)
   * [kube-proxy原理](Kubernetes/kube-proxy原理.md)
   * [Kubernetes Informers](Kubernetes/Kubernetes-informers.md)
+  * [Kubernetes扩展点](Kubernetes/Kubernetes扩展点.md)
   * [Pod Non Root](Kubernetes/Pod-non-root.md)
   * [Pod驱逐](Kubernetes/Pod驱逐.md)
   * [PV PVC Storage Class](Kubernetes/PV-PVC-StorageClass.md)
