@@ -22,6 +22,7 @@
   * [Golang之类型判断](Golang/Golang之类型判断.md)
   * [Golang代码质量检测](Golang/Golang代码质量检测.md)
   * [Golang字符串遍历](Golang/Golang字符串遍历.md)
+  * [golang并发控制代码示例](Golang/golang并发控制代码示例.md)
   * [Golang性能优化](Golang/Golang性能优化.md)
   * [Golang死锁](Golang/Golang死锁.md)
   * [goroutine-协程-线程-进程](Golang/goroutine-协程-线程-进程.md)
