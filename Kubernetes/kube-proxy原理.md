@@ -30,3 +30,4 @@ IPVS 有三种模式
 IPVS是专门设计用来做内核态四层负载均衡的，性能更好，应用越来越广泛，IPVS必然未来会取代 iptables 成为 Kubernetes 成为 Kubernetes Service 的默认实现后端。
 #### 参考
 * [IPVS从入门到精通kube-proxy实现原理](http://dockone.io/article/9441)
+* [浅谈Kubernetes Service负载均衡实现机制](https://xigang.github.io/2019/07/21/kubernetes-service/)
