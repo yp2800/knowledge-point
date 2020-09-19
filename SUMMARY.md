@@ -16,6 +16,7 @@
   * [Golang Override Package Function](Golang/Golang-override-package-function.md)
   * [Golang-Slice删除元素](Golang/Golang-Slice删除元素.md)
   * [Golang-sync.Map](Golang/Golang-sync.Map.md)
+  * [Golang-type关键字](Golang/Golang-type关键字.md)
   * [Golang-继承](Golang/Golang-继承.md)
   * [Golang之channel](Golang/Golang之channel.md)
   * [Golang之continue](Golang/Golang之continue.md)
