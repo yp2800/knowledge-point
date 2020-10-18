@@ -135,3 +135,87 @@ func showResp(ctx context.Context,wg *sync.WaitGroup)  {
 	}
 }
 ```
+
+> context 超时退出
+
+```go
+func main() {
+	 wg:= &sync.WaitGroup{}
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+	wg.Add(1)
+	go cancelByContext(ctx, wg)
+	wg.Wait()
+
+}
+func cancelByContext(ctx context.Context, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println("cancel goroutine by context:", ctx.Err())
+			return
+		default:
+			if hander(-1) != nil {
+				return
+			}
+			time.Sleep(time.Second)
+		}
+	}
+}
+
+func hander(x int) error {
+	fmt.Println("hander ", x)
+	if x > 0 {
+		return errors.New("x > 0")
+	}
+	return nil
+}
+```
+
+## panic 
+
+```go
+func main() {
+	wg := &sync.WaitGroup{}
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+	go func(ctx context.Context, wg *sync.WaitGroup) {
+		defer wg.Done()
+		for {
+			select {
+			case <-ctx.Done():
+				fmt.Println("ctx done")
+				return
+			default:
+			}
+		}
+	}(ctx, wg)
+	wg.Add(1)
+	go cancelByPanic(wg)
+	wg.Wait()
+
+}
+func cancelByPanic(wg *sync.WaitGroup) {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("cancel goroutine by context: ", err)
+		}
+	}()
+	defer wg.Done()
+	for {
+		if hander(1) != nil {
+			return
+		}
+		time.Sleep(time.Second)
+	}
+}
+
+func hander(x int) error {
+	fmt.Println("hander ", x)
+	if x > 0 {
+		return errors.New("x > 0")
+	}
+	return nil
+}
+```
