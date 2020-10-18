@@ -26,6 +26,7 @@
   * [Golang-type关键字](Golang/Golang-type关键字.md)
   * [Golang-代码生成](Golang/Golang-代码生成.md)
   * [golang-并发数控制](Golang/golang-并发数控制.md)
+  * [Golang-并发退出](Golang/Golang-并发退出.md)
   * [Golang-插件系统](Golang/Golang-插件系统.md)
   * [Golang-继承](Golang/Golang-继承.md)
   * [Golang之channel](Golang/Golang之channel.md)
