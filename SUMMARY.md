@@ -25,6 +25,7 @@
   * [Golang-Slice删除元素](Golang/Golang-Slice删除元素.md)
   * [Golang-sync.Cond](Golang/Golang-sync.Cond.md)
   * [Golang-sync.Map](Golang/Golang-sync.Map.md)
+  * [Golang-sync.once](Golang/Golang-sync.once.md)
   * [Golang-type关键字](Golang/Golang-type关键字.md)
   * [Golang-代码生成](Golang/Golang-代码生成.md)
   * [golang-并发数控制](Golang/golang-并发数控制.md)
