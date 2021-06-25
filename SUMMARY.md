@@ -25,6 +25,7 @@
   * [Golang-json.Unmarshal](Golang/Golang-json.Unmarshal.md)
   * [Golang Label](Golang/golang-label.md)
   * [Golang Map String Struct](Golang/Golang-map-string-struct.md)
+  * [Golang Map To Struct](Golang/Golang-map-to-struct.md)
   * [Golang Override Package Function](Golang/Golang-override-package-function.md)
   * [Golang-Slice删除元素](Golang/Golang-Slice删除元素.md)
   * [Golang Switch](Golang/Golang-switch.md)
